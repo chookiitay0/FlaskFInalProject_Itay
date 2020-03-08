@@ -1,0 +1,80 @@
+﻿{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+<h2 style="text-align:center">{{ title }}</h2>
+
+<div class="row my-grid-borders">
+    <p><font size="4"> This Dataset shows the rate of unimployment in the states of USA since 1990 to 2016 in each month of the year by state.</font></p>
+</div>
+
+<div class="row my-grid-borders">
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_poverty_USA }} alt='Missing' , width="150" height="150"></div>
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_OneDollar_Pocket }} alt='Missing' , width="150" height="150"></div>
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_povertyline }} alt='Missing' , width="150" height="150"></div>
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_BurningMoney }} alt='Missing' , width="150" height="150"></div>
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_OneDollar_Pocket }} alt='Missing' , width="150" height="150"></div>
+
+</div>
+
+<br />
+
+<div class="row my-grid-borders">
+    <h2> Unimployment Rate USA - Dataset Fields:</h2>
+</div>
+
+<div class="row my-grid-borders">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th><font color="#1E68FF"> Column Name </font></th>
+                <th><font color="red"> The Description of the Column</font></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><font color="#1E68FF"> Year</font></td>
+                <td><font color="red"> The Year of the presented data.</font></td>
+            </tr>
+            <tr>
+                <td><font color="#1E68FF"> Month</font></td>
+                <td><font color="red"> The mounth in the year of the presented data.</font></td>
+            </tr>
+            <tr>
+                <td><font color="#1E68FF"> State</font></td>
+                <td><font color="red"> The name of the state in the USA.</font></td>
+            </tr>
+            <tr>
+                <td><font color="#1E68FF"> County</font></td>
+                <td><font color="red"> The county's name in the state.</font></td>
+            </tr>
+            <tr>
+                <td><font color="#1E68FF"> Unimployment Rate</font></td>
+                <td><font color="red"> The rate of unimployment according to the others columns.</font></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row my-grid-borders">
+    <div class="col-md-5 my-grid-borders">
+        <form method="post">
+            {{ form1.csrf_token }}
+            <input class="btn btn-success" type="submit" name="action" value="Expand">
+        </form>
+    </div>
+    <div class="col-md-5 my-grid-borders">
+        <form method="post">
+            {{ form2.csrf_token }}
+            <input class="btn btn-danger" type="submit" name="action" value="Collapse">
+        </form>
+    </div>
+    <div class="row my-grid-borders">
+        {{ raw_data_table | safe}}
+    </div>
+</div>
+
+
+    {% endblock %}
+
