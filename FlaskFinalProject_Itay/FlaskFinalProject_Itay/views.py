@@ -145,7 +145,7 @@ def DataCrime():
     """Renders the about page."""
     form1 = ExpandForm()
     form2 = CollapseForm()
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static/Data/DataCrime.csv'))
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static/data/DataCrime.csv'))
     raw_data_table = ''
 
     if request.method == 'POST':
@@ -180,7 +180,7 @@ def UnimploymentRate():
     """Renders the about page."""
     form1 = ExpandForm()
     form2 = CollapseForm()
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static/Data/unimploymentrateusa.csv'))
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static/data/unimploymentrateusa.csv'))
     raw_data_table = ''
 
     if request.method == 'POST':
@@ -220,7 +220,7 @@ def Query():
     Name = None
     Country = ''
     capital = ''
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static/Data/capitals.csv'))
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static/data/capitals.csv'))
     df = df.set_index('Country')
     
     
@@ -235,7 +235,7 @@ def Query():
             capital = name + ', no such country'
         form.name.data = ''
 
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static/Data/capitals.csv'))
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static/data/capitals.csv'))
 
     raw_data_table = df.to_html(classes = 'table table-hover')
 
