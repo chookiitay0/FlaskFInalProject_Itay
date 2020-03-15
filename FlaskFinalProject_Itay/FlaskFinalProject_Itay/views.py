@@ -30,6 +30,7 @@ from FlaskFinalProject_Itay.Models.QueryFormStructure import LoginFormStructure
 from FlaskFinalProject_Itay.Models.QueryFormStructure import UserRegistrationFormStructure 
 from FlaskFinalProject_Itay.Models.QueryFormStructure import ExpandForm
 from FlaskFinalProject_Itay.Models.QueryFormStructure import CollapseForm
+
 from flask_bootstrap import Bootstrap
 bootstrap = Bootstrap(app)
 
@@ -275,3 +276,20 @@ def Register():
         repository_name='Pandas',
         )
 
+@app.route('/login', methods=['GET', 'POST'])
+def Login():
+    form = LoginFormStructure(request.form)
+    if (request.method == 'POST' and form.validate()):
+        if (db_Functions.IsLoginGood(form.Username.data, form.Password.data)):
+            flash('Login approved!')
+            return redirect('')
+        else:
+            flash('Error in - Username and/or password')
+   
+    return render_template(
+        'login.html', 
+        form=form, 
+        title='Login to data analysis',
+        year=datetime.now().year,
+        repository_name='Pandas',
+    )
