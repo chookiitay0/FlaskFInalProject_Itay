@@ -1,0 +1,30 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<h2 style="text-align:center;"><font color="dodgerblue">{{ title }}</font></h2>
+<h3>{{ message }}</h3>
+
+<br />
+
+<div class="row my-grid-borders">
+    <div class="row">
+        <div class="col-lg-6">
+            <img class="contain" src={{ img_Kaggle }} alt='Missing'>
+        </div>
+
+        <div class="col-lg-6">
+            <font size="3"><p dir="rtl">{{Kaggle}}</p></font>
+        </div>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+<button onclick="goBack()"><font color="dodgerblue">Previous Page</font></button>
+
+    {% endblock %}

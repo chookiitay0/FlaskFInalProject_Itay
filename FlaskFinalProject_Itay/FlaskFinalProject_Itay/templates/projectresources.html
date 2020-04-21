@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h2 style="text-align:center;">{{ title }}</h2>
+<h2 style="text-align:center;"><font color="dodgerblue">{{ title }}</font></h2>
 <h3>{{ message }}</h3>
 
 <br />
@@ -19,19 +19,12 @@
     </div>
 </div>
 
-<br />
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 
-
-
-
-
-
-
-
-
-
-
-
-
+<button onclick="goBack()"><font color="dodgerblue">Previous Page</font></button>
 
     {% endblock %}

@@ -1,3 +1,5 @@
+
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
@@ -54,12 +56,12 @@ input[type="checkbox"].input-validation-error {
 }
 
 .navbar-custom {
-    background-color: firebrick;
-    color: whitesmoke;
+    background-color: dodgerblue;
+    color: dodgerblue;
 }
 
 .navbar-custom1 {
-    color: whitesmoke;
+    color: dodgerblue;
 }
 
 .nav

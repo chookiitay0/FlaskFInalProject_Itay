@@ -1,0 +1,78 @@
+﻿{% extends "layout.html" %}
+
+
+{% block content %}
+
+<style>
+    .button1 {background-color: dodgerblue;}
+</style>
+
+<h2><font color="dodgerblue">{{ title }}</font></h2>
+
+<br />
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for message in messages %}
+<h3><font color="dodgerblue">{{ message[1] }}</font></h3>
+<br />
+<button><a href="{{ url_for('query') }}">Data Query Page</a></button>
+<br />
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+<br />
+
+<form method=post>
+    {{ form.csrf }}
+    {{ form.csrf_token }}
+    <table>
+        <tr>
+            <td>
+                {{ form.Username.label }}
+            </td>
+            <td>
+                {{ form.Username }}
+            </td>
+            <td>
+                {% if form.Username.errors %}
+                <ul class="text-danger">{% for error in form.Username.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.Password.label }}
+            </td>
+            <td>
+                {{ form.Password }}
+            </td>
+            <td>
+                {% if form.Password.errors %}
+                <ul class="text-danger">{% for error in form.Password.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <div class="input submit">
+                    <input type="submit" value="Login">
+                </div>
+            <td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+<button onclick="goBack()"><font color="dodgerblue">Previous Page</font></button>
+
+
+    {% endblock %}

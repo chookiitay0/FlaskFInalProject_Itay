@@ -1,21 +1,29 @@
 ﻿{% extends "layout.html" %}
 
+
 {% block content %}
 
-<h2>{{ title }}</h2>
+<style>
+    .button1 {background-color: dodgerblue;}
+</style>
+
+<h2><font color="dodgerblue">{{ title }}</font></h2>
+
+<br />
 
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
     {% for message in messages %}
-<h3>{{ message[1] }}</h3>
+<h3><font color="dodgerblue">{{ message[1] }}</font></h3>
+<br />
+<button><a href="{{ url_for('query') }}">Data Query Page</a></button>
 <br />
     {% endfor %}
 {% endif %}
 {% endwith %}
 
 <br />
-<br />
-<br />
+
 <form method=post>
     {{ form.csrf }}
     {{ form.csrf_token }}
@@ -57,5 +65,14 @@
         </tr>
     </table>
 </form>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+<button onclick="goBack()"><font color="dodgerblue">Previous Page</font></button>
+
 
     {% endblock %}

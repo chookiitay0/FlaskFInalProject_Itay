@@ -1,0 +1,66 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+
+<h1 style="text-align: center">
+    Data Sets Page
+</h1>
+
+<br />
+<br />
+
+<p><font size="4"> In this Page you will find 2 links that each of them explains about my 2 Datasets: "DataCrime" and "Unemployment Rate USA". </font></p>
+
+<head>
+    <style>
+        .botton {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: darkblue;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+            .botton:hover {
+                background-color: #000000
+            }
+
+            .botton:active {
+                background-color: darkblue;
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+            }
+    </style>
+</head>
+
+<img class="contain" src={{ img_DataBaseHomePic }} alt='Missing' , height="450" width="1000">
+
+<br />
+
+<div class="row my-grid-borders">
+    <button class="col-md-5 my-grid-borders"><a href="{{ url_for('UnemploymentRate') }}"><font size="3">Unemployment Rate - USA Dataset</font></a></button>
+    <div class="col-md-5 my-grid-borders"><font size="3">Explanation about the Unemployment Rate Dataset.</font></div>
+</div>
+
+<div class="row my-grid-borders">
+    <button class="col-md-5 my-grid-borders"><a href="{{ url_for('DataCrime') }}"><font size="3">Data Crime Dataset </font></a></button>
+    <div class="col-md-5 my-grid-borders"><font size="3">Explanation of the Data Crime Dataset.</font></div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+<button onclick="goBack()"><font color="dodgerblue">Previous Page</font></button>
+
+{% endblock %}

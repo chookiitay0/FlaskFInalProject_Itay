@@ -28,10 +28,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FlaskFInalProject_Itay\Models\Forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="FlaskFInalProject_Itay\Models\LocalDatabaseRoutines.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FlaskFInalProject_Itay\Models\QueryFormStructure.py">
+    <Compile Include="FlaskFInalProject_Itay\Models\plot_service_functions.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="runserver.py" />
@@ -53,7 +56,7 @@
   <ItemGroup>
     <Content Include="FlaskFInalProject_Itay\static\data\capitals.csv" />
     <Content Include="FlaskFInalProject_Itay\static\data\DataCrime.csv" />
-    <Content Include="FlaskFInalProject_Itay\static\data\unimploymentrateusa.csv" />
+    <Content Include="FlaskFInalProject_Itay\static\data\unemploymentrateusa.csv" />
     <Content Include="FlaskFInalProject_Itay\static\data\users.csv" />
     <Content Include="FlaskFInalProject_Itay\static\Pictures\BurningMoney.jpg" />
     <Content Include="FlaskFInalProject_Itay\static\Pictures\Crime-Panel-Image.jpg" />
@@ -61,6 +64,10 @@
     <Content Include="FlaskFInalProject_Itay\static\Pictures\CrimeTypes_NoColor.jpg" />
     <Content Include="FlaskFInalProject_Itay\static\Pictures\DataBase.jpg" />
     <Content Include="FlaskFInalProject_Itay\static\Pictures\DataBaseHomePic.jpg" />
+    <Content Include="FlaskFInalProject_Itay\static\Pictures\fbi-agent.jpg" />
+    <Content Include="FlaskFInalProject_Itay\static\Pictures\FBI-Logo.jpg" />
+    <Content Include="FlaskFInalProject_Itay\static\Pictures\FBI-Open.jpg" />
+    <Content Include="FlaskFInalProject_Itay\static\Pictures\fbi-walk.jpg" />
     <Content Include="FlaskFInalProject_Itay\static\Pictures\gunfight.jpg" />
     <Content Include="FlaskFInalProject_Itay\static\Pictures\Homeless_Jobless.jpg" />
     <Content Include="FlaskFInalProject_Itay\static\Pictures\Kaggle.jpg" />
@@ -71,19 +78,23 @@
     <Content Include="FlaskFInalProject_Itay\static\Pictures\SyberCrime.jpg" />
     <Content Include="FlaskFInalProject_Itay\static\Pictures\TheBlackList_1.jpg" />
     <Content Include="FlaskFInalProject_Itay\static\Pictures\tichonet.jpg" />
+    <Content Include="FlaskFInalProject_Itay\static\Pictures\timer.jpg" />
+    <Content Include="FlaskFInalProject_Itay\static\Pictures\usa.jpg" />
     <Content Include="FlaskFInalProject_Itay\static\Pictures\UsaFlag-Crime.jpg" />
     <Content Include="FlaskFInalProject_Itay\static\Pictures\WordCloud.jpg" />
     <Content Include="FlaskFInalProject_Itay\static\TextFiles\AboutTheProject.txt" />
     <Content Include="FlaskFInalProject_Itay\static\TextFiles\Home.txt" />
     <Content Include="FlaskFInalProject_Itay\static\TextFiles\Kaggle.txt" />
+    <Content Include="FlaskFInalProject_Itay\static\TextFiles\Query.txt" />
     <Content Include="FlaskFInalProject_Itay\templates\DataCrime.html" />
     <Content Include="FlaskFInalProject_Itay\templates\DataModel.html" />
     <Content Include="FlaskFInalProject_Itay\templates\PictureAlbum.html" />
     <Content Include="FlaskFInalProject_Itay\templates\projectresources.html" />
     <Content Include="FlaskFInalProject_Itay\templates\query.html" />
     <Content Include="FlaskFInalProject_Itay\templates\register.html" />
-    <Content Include="FlaskFInalProject_Itay\templates\UnimploymentRateUsa.html" />
+    <Content Include="FlaskFInalProject_Itay\templates\UnemploymentRateUsa.html" />
     <Content Include="FlaskFInalProject_Itay\templates\Login.html" />
+    <None Include="FolderProfile.pubxml" />
     <Content Include="requirements.txt" />
     <Content Include="FlaskFInalProject_Itay\static\content\bootstrap.css" />
     <Content Include="FlaskFInalProject_Itay\static\content\bootstrap.min.css" />

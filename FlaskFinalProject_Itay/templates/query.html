@@ -1,0 +1,74 @@
+﻿{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+
+<style>
+    .button1 {background-color: dodgerblue;}
+</style>
+
+<h1 style="text-align: center"><font color="dodgerblue">{{title}}</font></h1>
+
+<br />
+<br />
+
+<div class="row my-grid-borders">
+    <div class="row">
+        <div class="col-md-12">
+            <font size="4"><p dir="rtl">{{ QueryText }}</p></font>
+        </div>
+    </div>
+</div>
+
+
+<br />
+<br />
+
+<div class="row my-grid-borders">
+    <h3 style="text-align:center">Unemployment Rate Plot by State:</h3>
+    <br />
+    <p style="text-align:center"><font color="dodgerblue" size="4">{{message}}</font></p>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <form method="post">
+            {{ form1.csrf_token }}
+            {{ wtf.form_field(form1.DataSet)}}
+            {{ wtf.form_field(form1.year)}}
+            {{ wtf.form_field(form1.state)}}
+            <input class="btn btn-primary button1" type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="col-md-8">
+        <img src={{ chart }} class="img-thumbnail" alt="missing" height={{height_case_1}} width={{ width_case_1}}>
+    </div>
+
+    <div class="col-md-2">
+        <div class="card" style="width:200px">
+            <div class="card-body">
+                <h3 class="card-title">DataSet Details:</h3>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="https://www.kaggle.com/jayrav13/unemployment-by-county-us" target="_blank" class="btn btn-primary button1">DataSet Link</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+    <button onclick="goBack()"><font color="dodgerblue">Previous Page</font></button>
+
+
+
+    {% endblock %}
+
+

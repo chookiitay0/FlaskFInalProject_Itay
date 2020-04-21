@@ -101,8 +101,13 @@
     </div>
 </div>
 
-<button onclick="goBack()">Previous Page</button>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 
+<button onclick="goBack()"><font color="dodgerblue">Previous Page</font></button>
 
     {% endblock %}
 

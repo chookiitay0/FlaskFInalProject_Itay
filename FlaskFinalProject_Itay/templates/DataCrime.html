@@ -1,0 +1,113 @@
+﻿{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+<style>
+
+    body {
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+
+
+
+<h2 style="text-align:center"><font color="Black">Data Crime Page:</font></h2>
+
+<br />
+<br />
+
+<div class="row my-grid-borders">
+    <p><font size="4"> This Dataset Page is About The Data Crime in The USA. The United States of America contains 51 contries,  in each country, there are many crime cases taking place every year.</font></p>
+</div>
+
+<br />
+
+<div class="row my-grid-borders">
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_SyberCrime }} alt='Missing' , width="150" height="150"></div>
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_UsaFlagCrime }} alt='Missing' , width="150" height="150"></div>
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_WordCloud }} alt='Missing' , width="150" height="150"></div>
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_CrimeTypes }} alt='Missing' , width="150" height="150"></div>
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_TheBlackList_1 }} alt='Missing' , width="150" height="150"></div>
+</div>
+
+<br />
+
+<div class="row my-grid-borders">
+    <h2> Data Crime's Dataset Fields:</h2>
+</div>
+
+<div class="row my-grid-borders">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th><font color="#1E68FF"> Column Name </font></th>
+                <th><font color="red"> The Description of the Column</font></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><font color="#1E68FF"> Year</font></td>
+                <td><font color="red"> The Year the crime was reported.</font></td>
+            </tr>
+            <tr>
+                <td><font color="#1E68FF"> Total Population</font></td>
+                <td><font color="red"> Total population that have committed crimes.</font></td>
+            </tr>
+            <tr>
+                <td><font color="#1E68FF"> Crime Types</font></td>
+                <td><font color="red"> Robberies, Assaults, Rapes, Homicides and Violent.</font></td>
+            </tr>
+            <tr>
+                <td><font color="#1E68FF"> Homicides Rate</font></td>
+                <td><font color="red"> Homicides crime rate in the specific year. </font></td>
+            </tr>
+            <tr>
+                <td><font color="#1E68FF"> Rapes Rate</font></td>
+                <td><font color="red"> Rapes crime rate in the specific year.</font></td>
+            </tr>
+            <tr>
+                <td><font color="#1E68FF"> Assaults Rate</font></td>
+                <td><font color="red"> Assaults crime rate in the specific year.</font></td>
+            </tr>
+            <tr>
+                <td><font color="#1E68FF"> Robberies Rate</font></td>
+                <td><font color="red"> Robberies crime rate in the specific year.</font></td>
+            </tr>
+            <tr>
+                <td><font color="#1E68FF"> Total Crime Rate</font></td>
+                <td><font color="red"> Total crime rates of all types in the specific year.</font></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row my-grid-borders">
+    <div class="col-md-5 my-grid-borders">
+        <form method="post">
+            {{ form1.csrf_token }}
+            <input class="btn btn-success" type="submit" name="action" value="Expand">
+        </form>
+    </div>
+    <div class="col-md-5 my-grid-borders">
+        <form method="post">
+            {{ form2.csrf_token }}
+            <input class="btn btn-danger" type="submit" name="action" value="Collapse">
+        </form>
+    </div>
+    <div class="row my-grid-borders">
+        {{ raw_data_table | safe}}
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+<button onclick="goBack()"><font color="dodgerblue">Previous Page</font></button>
+
+    {% endblock %}
+

@@ -25,11 +25,13 @@ from wtforms import Form, BooleanField, StringField, PasswordField, validators
 from wtforms import TextField, TextAreaField, SubmitField, SelectField, DateField
 from wtforms import ValidationError
 
-from FlaskFinalProject_Itay.Models.QueryFormStructure import QueryFormStructure 
-from FlaskFinalProject_Itay.Models.QueryFormStructure import LoginFormStructure 
-from FlaskFinalProject_Itay.Models.QueryFormStructure import UserRegistrationFormStructure 
-from FlaskFinalProject_Itay.Models.QueryFormStructure import ExpandForm
-from FlaskFinalProject_Itay.Models.QueryFormStructure import CollapseForm
+from FlaskFinalProject_Itay.Models.Forms import LoginFormStructure 
+from FlaskFinalProject_Itay.Models.Forms import UserRegistrationFormStructure 
+from FlaskFinalProject_Itay.Models.Forms import ExpandForm
+from FlaskFinalProject_Itay.Models.Forms import CollapseForm
+from FlaskFinalProject_Itay.Models.Forms import SingleDataBaseForm
+from FlaskFinalProject_Itay.Models.plot_service_functions import plot_to_img
+
 
 from flask_bootstrap import Bootstrap
 bootstrap = Bootstrap(app)
@@ -113,6 +115,7 @@ def Album():
         img_DataBaseHomePic = '/static/Pictures/DataBaseHomePic.jpg',
         img_BurningMoney = '/static/Pictures/BurningMoney.jpg',
         img_Homeless_Jobless = '/static/Pictures/Homeless_Jobless.jpg',
+        img_USAFlag = '/static/Pictures/usa.jpg',
 
 
 
@@ -137,6 +140,8 @@ def DataModel():
         img_OneDollar_Pocket = '/static/Pictures/OneDollar_Pocket.jpg',
         img_poverty_USA = '/static/Pictures/poverty_USA.jpg',
         img_DataBaseHomePic = '/static/Pictures/DataBaseHomePic.jpg',
+        img_USAFlag = '/static/Pictures/usa.jpg',
+
 
    )
 
@@ -170,18 +175,19 @@ def DataCrime():
         img_TheBlackList_1 = '/static/Pictures/TheBlackList_1.jpg',
         img_OneDollar_Pocket = '/static/Pictures/OneDollar_Pocket.jpg',
         img_poverty_USA = '/static/Pictures/poverty_USA.jpg',
+        img_USAFlag = '/static/Pictures/usa.jpg',
         raw_data_table = raw_data_table,
         form1 = form1,
         form2 = form2
     )
 
 
-@app.route('/data/unimploymentrateusa' , methods = ['GET' , 'POST'])
-def UnimploymentRate():
+@app.route('/data/unemploymentrateusa' , methods = ['GET' , 'POST'])
+def UnemploymentRate():
     """Renders the about page."""
     form1 = ExpandForm()
     form2 = CollapseForm()
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static/data/unimploymentrateusa.csv'))
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static/data/unemploymentrateusa.csv'))
     raw_data_table = ''
 
     if request.method == 'POST':
@@ -193,8 +199,8 @@ def UnimploymentRate():
 
 
     return render_template(
-        'UnimploymentRateUsa.html',
-        title='Unimployment Rate Page',
+        'UnemploymentRateUsa.html',
+        title='Unemployment Rate Page',
         year=datetime.now().year,
         img_gunfight = '/static/Pictures/gunfight.jpg',
         img_povertyline = '/static/Pictures/poverty_line.jpg',
@@ -209,46 +215,81 @@ def UnimploymentRate():
         img_poverty_USA = '/static/Pictures/poverty_USA.jpg',
         img_BurningMoney = '/static/Pictures/BurningMoney.jpg',
         img_Homeless_Jobless = '/static/Pictures/Homeless_Jobless.jpg',
+        img_USAFlag = '/static/Pictures/usa.jpg',
         raw_data_table = raw_data_table,
         form1 = form1,
         form2 = form2
     )
 
 
-@app.route('/Query', methods=['GET', 'POST'])
-def Query():
+@app.route('/query' , methods = ['GET' , 'POST'])
+def query():
 
-    Name = None
-    Country = ''
-    capital = ''
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static/data/capitals.csv'))
-    df = df.set_index('Country')
-    
-    
-    form = QueryFormStructure(request.form)
-     
-    if (request.method == 'POST' ):
-        name = form.name.data
-        Country = name
-        if (name in df.index):
-            capital = df.loc[name,'Capital']
+    print("Query")
+
+    form1 = SingleDataBaseForm()
+    chart = '/static/Pictures/Homeless_Jobless.jpg'
+    height_case_1 = "250"
+    width_case_1 = "900"
+    f1 = open(path.join(path.dirname(__file__), 'static/TextFiles/Query.txt') , encoding="utf8")
+    s1 = f1.read()
+
+    df_Unim = pd.read_csv(path.join(path.dirname(__file__), 'static/data/unemploymentrateusa.csv'))
+    def chop_county(x):
+        if 'County' in x:
+            y = x.index('County')
+            return x[:y - 1]
         else:
-            capital = name + ', no such country'
-        form.name.data = ''
+            return x
+    df_Unim['County'] = df_Unim['County'].apply(lambda x: chop_county(x))
 
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static/data/capitals.csv'))
+    country_choices = list(set(df_Unim['State']))
+    clean_country_choices = [x for x in country_choices if x == x]
+    s = list(zip(clean_country_choices , clean_country_choices))
+    form1.state.choices = s
 
-    raw_data_table = df.to_html(classes = 'table table-hover')
+    year_choices = list(set(df_Unim['Year']))
+    clean_year_choices = [x for x in year_choices if x == x]
+    y = list(zip(clean_year_choices , clean_year_choices))
+    form1.year.choices = y
 
-    return render_template('Query.html', 
-            form = form, 
-            name = capital, 
-            Country = Country,
-            raw_data_table = raw_data_table,
-            title='Query Page',
-            year=datetime.now().year,
-            message='This page will use the web forms to get user input'
+    if request.method == 'POST':
+        DataSet = form1.DataSet.data 
+        year = int(form1.year.data)
+        state = form1.state.data
+        height_case_1 = "100"
+        width_case_1 = "900"
+
+       
+        df_Unim = df_Unim.set_index("Year")
+        df_Unim = df_Unim.loc[year]
+        df_Unim = df_Unim.set_index("State")
+        df_Unim = df_Unim.loc[state]
+        df_Unim = df_Unim.reset_index()
+        df_Unim = df_Unim.groupby(['County']).mean()
+
+        l = df_Unim["Rate"]
+        s = pd.Series(l)
+        fig = plt.figure()
+        fig.subplots_adjust(bottom = 0.5)
+        ax = fig.add_subplot(111)
+        s.plot(ax = ax, kind = 'bar', figsize = (10,8), fontsize = 14, color = 'dodgerblue')
+        chart = plot_to_img(fig)
+
+    return render_template(
+        'query.html',
+        title = 'Data Query Page',
+        message = 'Please enter the required parameters to see the plot.',
+        form1 = form1,
+        chart = chart,
+        height_case_1 = height_case_1 ,
+        width_case_1 = width_case_1 ,
+        img_USAFlag = '/static/Pictures/usa.jpg',
+        img_Timer = '/static/Pictures/timer.jpg',
+        
+        QueryText = s1,
         )
+
 
 # -------------------------------------------------------
 # Register new user page
@@ -262,7 +303,8 @@ def Register():
             db_Functions.AddNewUser(form)
             db_table = ""
 
-            flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data )
+            flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data + ". Please Login in The 'Login' Page.")
+
             # Here you should put what to do (or were to go) if registration was good
         else:
             flash('Error: User with this Username already exist ! - '+ form.Username.data)
@@ -271,7 +313,7 @@ def Register():
     return render_template(
         'register.html', 
         form=form, 
-        title='Register New User',
+        title='Register New User or Login',
         year=datetime.now().year,
         repository_name='Pandas',
         )
@@ -281,7 +323,7 @@ def Login():
     form = LoginFormStructure(request.form)
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.Username.data, form.Password.data)):
-            flash('Login approved!')
+            flash('You Have Successfully Logged in! Enjoy the Site content and features.')
             return redirect('')
         else:
             flash('Error in - Username and/or password')
@@ -293,3 +335,5 @@ def Login():
         year=datetime.now().year,
         repository_name='Pandas',
     )
+
+
