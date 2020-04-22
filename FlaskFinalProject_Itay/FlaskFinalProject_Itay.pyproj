@@ -94,7 +94,6 @@
     <Content Include="FlaskFInalProject_Itay\templates\register.html" />
     <Content Include="FlaskFInalProject_Itay\templates\UnemploymentRateUsa.html" />
     <Content Include="FlaskFInalProject_Itay\templates\Login.html" />
-    <None Include="FolderProfile.pubxml" />
     <Content Include="requirements.txt" />
     <Content Include="FlaskFInalProject_Itay\static\content\bootstrap.css" />
     <Content Include="FlaskFInalProject_Itay\static\content\bootstrap.min.css" />

@@ -276,6 +276,7 @@ def query():
         s.plot(ax = ax, kind = 'bar', figsize = (10,8), fontsize = 14, color = 'dodgerblue')
         chart = plot_to_img(fig)
 
+
     return render_template(
         'query.html',
         title = 'Data Query Page',
@@ -303,8 +304,7 @@ def Register():
             db_Functions.AddNewUser(form)
             db_table = ""
 
-            flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data + ". Please Login in The 'Login' Page.")
-
+            flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data + ". Please Login in the next Page.")
             # Here you should put what to do (or were to go) if registration was good
         else:
             flash('Error: User with this Username already exist ! - '+ form.Username.data)
@@ -324,7 +324,7 @@ def Login():
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.Username.data, form.Password.data)):
             flash('You Have Successfully Logged in! Enjoy the Site content and features.')
-            return redirect('')
+            return redirect('query')
         else:
             flash('Error in - Username and/or password')
    

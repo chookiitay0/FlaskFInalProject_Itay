@@ -16,8 +16,6 @@
     {% for message in messages %}
 <h3><font color="dodgerblue">{{ message[1] }}</font></h3>
 <br />
-<button><a href="{{ url_for('query') }}">Data Query Page</a></button>
-<br />
     {% endfor %}
 {% endif %}
 {% endwith %}
