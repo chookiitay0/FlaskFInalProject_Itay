@@ -9,6 +9,8 @@ import datetime
 from os import path
 import io
 
+# Plot to Image function
+
 def plot_to_img(fig):
     pngImage = io.BytesIO()
     FigureCanvas(fig).print_png(pngImage)

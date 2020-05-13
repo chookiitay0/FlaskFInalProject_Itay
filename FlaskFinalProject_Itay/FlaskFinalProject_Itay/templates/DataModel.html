@@ -3,14 +3,15 @@
 {% block content %}
 
 
-<h1 style="text-align: center">
-    Data Sets Page
-</h1>
+<h1 style="text-align:center;">{{ title }}</h1>
+
 
 <br />
 <br />
 
 <p><font size="4"> In this Page you will find 2 links that each of them explains about my 2 Datasets: "DataCrime" and "Unemployment Rate USA". </font></p>
+
+<!-- עיצוב לכפתור המפנה לעמוד המסביר על כל מאגר נתונים במפורט-->
 
 <head>
     <style>
@@ -45,16 +46,19 @@
 
 <br />
 
+<!-- Redirect button for the Unemployment Rate Details page. -->
 <div class="row my-grid-borders">
     <button class="col-md-5 my-grid-borders"><a href="{{ url_for('UnemploymentRate') }}"><font size="3">Unemployment Rate - USA Dataset</font></a></button>
     <div class="col-md-5 my-grid-borders"><font size="3">Explanation about the Unemployment Rate Dataset.</font></div>
 </div>
 
+<!-- Redirect button for the Data Crime Details page. -->
 <div class="row my-grid-borders">
     <button class="col-md-5 my-grid-borders"><a href="{{ url_for('DataCrime') }}"><font size="3">Data Crime Dataset </font></a></button>
     <div class="col-md-5 my-grid-borders"><font size="3">Explanation of the Data Crime Dataset.</font></div>
 </div>
 
+<!-- פעולה שמייצרת כפתור שבעת לחיצה עליו המשתמש יועבר לדף הקודם אשר גלש-->
 <script>
     function goBack() {
         window.history.back();

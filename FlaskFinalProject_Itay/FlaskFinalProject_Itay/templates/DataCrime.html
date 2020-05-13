@@ -13,7 +13,7 @@
 
 
 
-<h2 style="text-align:center"><font color="Black">Data Crime Page:</font></h2>
+<h2 style="text-align:center;">{{ title }}</h2>
 
 <br />
 <br />
@@ -23,6 +23,8 @@
 </div>
 
 <br />
+
+<!-- Few pictures connected to the Data Crime subject -->
 
 <div class="row my-grid-borders">
     <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_SyberCrime }} alt='Missing' , width="150" height="150"></div>
@@ -83,6 +85,8 @@
     </table>
 </div>
 
+<!-- Expand and Collapse buttons -->
+
 <div class="row my-grid-borders">
     <div class="col-md-5 my-grid-borders">
         <form method="post">
@@ -101,6 +105,7 @@
     </div>
 </div>
 
+<!-- פעולה שמייצרת כפתור שבעת לחיצה עליו המשתמש יועבר לדף הקודם אשר גלש-->
 <script>
     function goBack() {
         window.history.back();

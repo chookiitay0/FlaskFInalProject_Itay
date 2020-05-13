@@ -54,7 +54,6 @@
     <Folder Include="FlaskFInalProject_Itay\templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FlaskFInalProject_Itay\static\data\capitals.csv" />
     <Content Include="FlaskFInalProject_Itay\static\data\DataCrime.csv" />
     <Content Include="FlaskFInalProject_Itay\static\data\unemploymentrateusa.csv" />
     <Content Include="FlaskFInalProject_Itay\static\data\users.csv" />

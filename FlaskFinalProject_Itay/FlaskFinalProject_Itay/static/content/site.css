@@ -64,6 +64,11 @@ input[type="checkbox"].input-validation-error {
     color: dodgerblue;
 }
 
+.custom-jumbotron {
+    background-color: dodgerblue;
+    color: whitesmoke;
+}
+
 .nav
 
 .jumbotron-hebrew-calibri {

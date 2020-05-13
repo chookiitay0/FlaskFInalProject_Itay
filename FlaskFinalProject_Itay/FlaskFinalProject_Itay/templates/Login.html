@@ -3,6 +3,7 @@
 
 {% block content %}
 
+<!-- עיצוב כפתור -->
 <style>
     .button1 {background-color: dodgerblue;}
 </style>
@@ -64,12 +65,17 @@
     </table>
 </form>
 
+<!-- פעולה שמייצרת כפתור שבעת לחיצה עליו המשתמש יועבר לדף הקודם אשר גלש-->
 <script>
     function goBack() {
         window.history.back();
     }
 </script>
 
+<br />
+<br />
+
+<!-- הכפתור עצמו-->
 <button onclick="goBack()"><font color="dodgerblue">Previous Page</font></button>
 
 

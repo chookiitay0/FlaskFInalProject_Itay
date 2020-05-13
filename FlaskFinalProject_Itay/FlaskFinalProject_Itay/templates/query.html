@@ -5,7 +5,9 @@
 
 
 <style>
-    .button1 {background-color: dodgerblue;}
+    .button1 {
+        background-color: dodgerblue;
+    }
 </style>
 
 <h1 style="text-align: center"><font color="dodgerblue">{{title}}</font></h1>
@@ -58,14 +60,14 @@
 </div>
 
 
+<!-- פעולה שמייצרת כפתור שבעת לחיצה עליו המשתמש יועבר לדף הקודם אשר גלש-->
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-
-    <button onclick="goBack()"><font color="dodgerblue">Previous Page</font></button>
+<button onclick="goBack()"><font color="dodgerblue">Previous Page</font></button>
 
 
 
